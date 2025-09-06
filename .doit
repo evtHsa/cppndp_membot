@@ -1,2 +1,3 @@
 git config --global user.email "rocky@bullwinkle.com"
 git config --global user.name "rocky the squirrel"
+export EDITOR=emacs
