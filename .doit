@@ -1,2 +1,31 @@
+set -x
+
 git config --global user.email "rocky@bullwinkle.com"
 git config --global user.name "rocky the squirrel"
+git config --global core.pager cat
+export EDITOR=emacs
+
+function build(){ (cd ..;clear;make);}
+function gpol() { git log --pretty=oneline -${1}; }
+
+export EDITOR=emacs
+sane_term
+unalias ls
+alias gnp='git --no-pager'
+alias glp='git log --pretty=oneline'
+alias glpx='git log --pretty=format:"%h%x09%an%x09%ad%x09%s"'
+alias glpg='git log --pretty=format:"%h%x09%an%x09%ad%x09%s" --graph'
+alias rdbu='rebase_deleted_by_us'
+alias rba='rebase_both_added'
+alias rbm='rebase_both_modified'
+alias rbc='git rebase --continue'
+alias gdc='git --no-pager diff --cached'
+set +x
+
+parse_git_branch() {
+  git branch 2>/dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/'
+}
+export PS1="\u@\h \W\[\033[32m\]\$(parse_git_branch)\[\033[00m\] $ "
+
+cat .gitconfig >>/root/.gigconfig
+
