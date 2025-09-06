@@ -11,7 +11,7 @@ GraphNode::~GraphNode()
     //// STUDENT CODE
     ////
 
-    delete _chatBot; 
+    //delete _chatBot;  /* FIXME: see if not calling dtor 2nd time is temp fix b4 RuleOf5 */
 
     ////
     //// EOF STUDENT CODE
