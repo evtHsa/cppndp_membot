@@ -1,1 +1,11 @@
 .github/**
+Makefile
+CMake*
+build/
+*.CMake
+images/
+membot
+LICENSE
+membot
+README.md
+cmake_install.cmake
