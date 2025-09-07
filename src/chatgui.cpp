@@ -137,8 +137,7 @@ ChatBotPanelDialog::~ChatBotPanelDialog()
     //// STUDENT CODE
     ////
 
-    std::cout << "FIXME:~ChatBotPanelDialog: commented out apparent double free" << std::endl;
-    delete _chatLogic.get(); // FIXME: chatbot destructor still called twice
+    // no delete of _chatLogic needed here. now handled by smart ptr
     ////
     //// EOF STUDENT CODE
 }
