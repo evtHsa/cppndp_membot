@@ -32,7 +32,14 @@ ChatBot::ChatBot(std::string filename)
 
 // copy constructor
 ChatBot::ChatBot(const ChatBot &source) {
-    assert(__PRETTY_FUNCTION__ == 0);
+    std::cout << "ChatBot copy constructor " << &source << " to instance " << this << std::endl;
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    _image = nullptr;
+    //use wxBitmap here because image is a owned(not shared) resource
+    if (source._image != nullptr) {
+        _image = new wxBitmap(*source._image);   // wxBitmap ctor(const wxBitmap& bitmap)
+    }
 }
 
 // copy assign operator
