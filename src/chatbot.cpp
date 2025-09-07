@@ -30,6 +30,27 @@ ChatBot::ChatBot(std::string filename)
     _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
 }
 
+// copy constructor
+ChatBot::ChatBot(const ChatBot &source) {
+    assert(__PRETTY_FUNCTION__ == 0);
+}
+
+// copy assign operator
+ChatBot &ChatBot::operator=(const ChatBot &source) {
+    assert(__PRETTY_FUNCTION__ == 0);
+};
+
+// move ctor(note double '&', not const)
+ChatBot::ChatBot(const ChatBot &&source) {
+    assert(__PRETTY_FUNCTION__ == 0);
+};
+
+// move assign operator(note double '&', not const)
+ChatBot &ChatBot::operator=(const ChatBot &&source) {
+    assert(__PRETTY_FUNCTION__ == 0);
+};
+
+
 ChatBot::~ChatBot()
 {
     std::cout << "ChatBot Destructor" << std::endl;
