@@ -44,7 +44,19 @@ ChatBot::ChatBot(const ChatBot &source) {
 
 // copy assign operator
 ChatBot &ChatBot::operator=(const ChatBot &source) {
-    assert(__PRETTY_FUNCTION__ == 0);
+    std::cout << "ChatBot copy assign operator instance " << this << " from " << &source << std::endl;
+    if (this == &source) {
+        return *this;
+    }
+    if (_image) {
+        delete _image;
+    }
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    if (source._image) {
+        _image = new wxBitmap(*source._image);
+    }
+    return *this;
 };
 
 // move ctor(note double '&', not const)
