@@ -23,7 +23,8 @@ ChatLogic::ChatLogic()
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
     _chatBot->SetChatLogicHandle(this);
     ChatBot FIXME;
-    ChatBot FIXME2 = std::move(FIXME);
+    ChatBot FIXME2;
+    FIXME2 = std::move(FIXME);
 }
 
 ChatLogic::~ChatLogic()

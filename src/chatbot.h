@@ -29,7 +29,7 @@ public:
     ChatBot(const ChatBot &source); // copy constructor
     ChatBot &operator=(const ChatBot &source); // copy assign op
     ChatBot(ChatBot &&source); // move ctor(note double '&', not const)
-    ChatBot &operator=(const ChatBot &&source);
+    ChatBot &operator=(ChatBot &&source); 
     ~ChatBot();
 
     //// STUDENT CODE

@@ -63,6 +63,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source) {
 // source can't be const because we're moving the resources
 // and must null splatter source
 ChatBot::ChatBot(ChatBot &&source) {
+    std::cout << "ChatBot move constructor instance " << this << " from " << &source << std::endl;
     if (this == &source) { // this seems unneeded but I couldn't find proof so ...
         return;
     }
@@ -75,8 +76,20 @@ ChatBot::ChatBot(ChatBot &&source) {
 };
 
 // move assign operator(note double '&', not const)
-ChatBot &ChatBot::operator=(const ChatBot &&source) {
-    assert(__PRETTY_FUNCTION__ == 0);
+ChatBot& ChatBot::operator=(ChatBot &&source) {
+    std::cout << "ChatBot move assignment instance " << this << " from " << &source << std::endl;
+    if (this == &source) {
+        return *this;
+    }
+    if (_image) {
+        delete _image;
+    }
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    _image = source._image;
+    source._chatLogic = nullptr;
+    source._rootNode = nullptr;
+    source._image = nullptr;
 };
 
 
