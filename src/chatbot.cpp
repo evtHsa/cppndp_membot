@@ -59,9 +59,19 @@ ChatBot &ChatBot::operator=(const ChatBot &source) {
     return *this;
 };
 
-// move ctor(note double '&', not const)
-ChatBot::ChatBot(const ChatBot &&source) {
-    assert(__PRETTY_FUNCTION__ == 0);
+// move ctor(note double '&')
+// source can't be const because we're moving the resources
+// and must null splatter source
+ChatBot::ChatBot(ChatBot &&source) {
+    if (this == &source) { // this seems unneeded but I couldn't find proof so ...
+        return;
+    }
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    _image = source._image;
+    source._chatLogic = nullptr;
+    source._rootNode = nullptr;
+    source._image = nullptr;
 };
 
 // move assign operator(note double '&', not const)
