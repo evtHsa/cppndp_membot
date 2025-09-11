@@ -1,0 +1,4 @@
+[alias]
+lg = log --pretty=tformat:'%<(10) %h  %<(12) %an : %s'
+lgt = log --graph --abbrev-commit --decorate --format=format:'h% - (%ar) %s - %an %d' --all
+lgb = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset%n' --abbrev-commit --date=relative --branches
