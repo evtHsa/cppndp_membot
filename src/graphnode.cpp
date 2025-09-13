@@ -24,7 +24,8 @@ void GraphNode::AddToken(std::string token)
 
 void GraphNode::AddEdgeToParentNode(GraphEdge *edge)
 {
-    _parentEdges.push_back(edge);
+  std::shared_ptr<GraphEdge> sp_edge(edge);
+  _parentEdges.push_back(sp_edge);
 }
 
 void GraphNode::AddEdgeToChildNode(GraphEdge *edge)
