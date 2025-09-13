@@ -36,7 +36,7 @@ ChatLogic::~ChatLogic()
     // delete all nodes
     for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it)
     {
-        delete *it;
+      it = _nodes.erase(it);
     }
 
     // delete all edges
