@@ -36,13 +36,13 @@ ChatLogic::~ChatLogic()
     // delete all nodes
     for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it)
     {
-      it = _nodes.erase(it);
+      //it = _nodes.erase(it); // FIXME:guessing
     }
 
     // delete all edges
     for (auto it = std::begin(_edges); it != std::end(_edges); ++it)
     {
-        delete *it;
+      //delete *it;  // FIXME:guessing
     }
 
     ////
