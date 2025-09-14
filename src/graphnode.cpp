@@ -8,6 +8,7 @@ GraphNode::GraphNode(int id)
 
 GraphNode::~GraphNode()
 {
+    std::cout << "~GraphNode" << std::endl;
     //// STUDENT CODE
     ////
 
