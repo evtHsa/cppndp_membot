@@ -1,4 +1,5 @@
 .github/**
+tmp/*
 Makefile
 CMake*
 build/
