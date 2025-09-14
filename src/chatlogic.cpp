@@ -39,14 +39,7 @@ ChatLogic::~ChatLogic()
       it = _nodes.erase(it);
     }
 
-    // delete all edges
-    for (auto it = std::begin(_edges); it != std::end(_edges); ++it)
-    {
-      //delete *it;  // FIXME:guessing
-    }
-
-    ////
-    //// EOF STUDENT CODE
+    // deletion of smart ptrs effects deletion of graph edge when Node is dtor'ed
 }
 
 template <typename T>
