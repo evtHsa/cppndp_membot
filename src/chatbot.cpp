@@ -95,7 +95,7 @@ ChatBot& ChatBot::operator=(ChatBot &&source) {
 
 ChatBot::~ChatBot()
 {
-    std::cout << "ChatBot Destructor" << std::endl;
+  std::cout << "~ChatBot(" << this << ")" << std::endl;
 
     // deallocate heap memory
     if(_image != NULL) // Attention: wxWidgets used NULL and not nullptr
