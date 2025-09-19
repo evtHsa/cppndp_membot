@@ -11,6 +11,7 @@
 // constructor WITHOUT memory allocation
 ChatBot::ChatBot()
 {
+    std::cout << __PRETTY_FUNCTION__  << std::endl;
     // invalidate data handles
     _image = nullptr;
     _chatLogic = nullptr;
@@ -20,7 +21,7 @@ ChatBot::ChatBot()
 // constructor WITH memory allocation
 ChatBot::ChatBot(std::string filename)
 {
-    std::cout << "ChatBot Constructor" << std::endl;
+    std::cout << __PRETTY_FUNCTION__  << std::endl;
     
     // invalidate data handles
     _chatLogic = nullptr;
@@ -107,6 +108,8 @@ ChatBot::~ChatBot()
 
 void ChatBot::ReceiveMessageFromUser(std::string message)
 {
+
+    std::cout << __PRETTY_FUNCTION__  << std::endl;
     // loop over all edges and keywords and compute Levenshtein distance to query
     typedef std::pair<GraphEdge *, int> EdgeDist;
     std::vector<EdgeDist> levDists; // format is <ptr,levDist>
