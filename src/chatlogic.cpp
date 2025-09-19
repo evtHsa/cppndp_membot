@@ -14,10 +14,6 @@
 
 ChatLogic::ChatLogic()
 {
-    //// STUDENT CODE
-    ////
-    // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
-    _chatBot->SetChatLogicHandle(this);
   std::cout << __PRETTY_FUNCTION__  << ", this: " << this << std::endl;
 }
 
