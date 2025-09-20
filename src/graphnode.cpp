@@ -33,7 +33,7 @@ void GraphNode::AddEdgeToParentNode(GraphEdge *edge)
 void GraphNode::AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge)
 {
     std::cout << __PRETTY_FUNCTION__  << std::endl;
-  _childEdges.push_back(edge.get());
+    _childEdges.push_back(std::move(edge)); // forgot about xvalues
 }
 
 //// STUDENT CODE
@@ -56,7 +56,7 @@ GraphEdge *GraphNode::GetChildEdgeAtIndex(int index)
     //// STUDENT CODE
     ////
 
-    return _childEdges[index];
+  return _childEdges[index].get(); // bugfix: signature mandates raw ptr
 
     ////
     //// EOF STUDENT CODE
