@@ -30,6 +30,69 @@ ChatBot::ChatBot(std::string filename)
     _image = new wxBitmap(filename, wxBITMAP_TYPE_PNG);
 }
 
+// copy constructor
+ChatBot::ChatBot(const ChatBot &source) {
+    std::cout << "ChatBot copy constructor " << &source << " to instance " << this << std::endl;
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    _image = nullptr;
+    //use wxBitmap here because image is a owned(not shared) resource
+    if (source._image != nullptr) {
+        _image = new wxBitmap(*source._image);   // wxBitmap ctor(const wxBitmap& bitmap)
+    }
+}
+
+// copy assign operator
+ChatBot &ChatBot::operator=(const ChatBot &source) {
+    std::cout << "ChatBot copy assign operator instance " << this << " from " << &source << std::endl;
+    if (this == &source) {
+        return *this;
+    }
+    if (_image) {
+        delete _image;
+    }
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    if (source._image) {
+        _image = new wxBitmap(*source._image);
+    }
+    return *this;
+};
+
+// move ctor(note double '&')
+// source can't be const because we're moving the resources
+// and must null splatter source
+ChatBot::ChatBot(ChatBot &&source) {
+    std::cout << "ChatBot move constructor instance " << this << " from " << &source << std::endl;
+    if (this == &source) { // this seems unneeded but I couldn't find proof so ...
+        return;
+    }
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    _image = source._image;
+    source._chatLogic = nullptr;
+    source._rootNode = nullptr;
+    source._image = nullptr;
+};
+
+// move assign operator(note double '&', not const)
+ChatBot& ChatBot::operator=(ChatBot &&source) {
+    std::cout << "ChatBot move assignment instance " << this << " from " << &source << std::endl;
+    if (this == &source) {
+        return *this;
+    }
+    if (_image) {
+        delete _image;
+    }
+    _chatLogic = source._chatLogic;
+    _rootNode = source._rootNode;
+    _image = source._image;
+    source._chatLogic = nullptr;
+    source._rootNode = nullptr;
+    source._image = nullptr;
+};
+
+
 ChatBot::~ChatBot()
 {
     std::cout << "ChatBot Destructor" << std::endl;
