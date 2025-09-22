@@ -105,12 +105,6 @@ ChatBot::~ChatBot()
     }
 }
 
-//// STUDENT CODE
-////
-
-////
-//// EOF STUDENT CODE
-
 void ChatBot::ReceiveMessageFromUser(std::string message)
 {
     // loop over all edges and keywords and compute Levenshtein distance to query
