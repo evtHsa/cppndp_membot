@@ -32,6 +32,7 @@ ChatBot::ChatBot(std::string filename)
 
 // copy constructor
 ChatBot::ChatBot(const ChatBot &source) {
+    std::cout << "ChatBot copy constructor " << &source << " to instance " << this << std::endl;
     _chatLogic = source._chatLogic;
     _rootNode = source._rootNode;
     _image = nullptr;
@@ -43,6 +44,7 @@ ChatBot::ChatBot(const ChatBot &source) {
 
 // copy assign operator
 ChatBot &ChatBot::operator=(const ChatBot &source) {
+    std::cout << "ChatBot copy assign operator instance " << this << " from " << &source << std::endl;
     if (this == &source) {
         return *this;
     }
@@ -61,6 +63,7 @@ ChatBot &ChatBot::operator=(const ChatBot &source) {
 // source can't be const because we're moving the resources
 // and must null splatter source
 ChatBot::ChatBot(ChatBot &&source) {
+    std::cout << "ChatBot move constructor instance " << this << " from " << &source << std::endl;
     if (this == &source) { // this seems unneeded but I couldn't find proof so ...
         return;
     }
@@ -74,6 +77,7 @@ ChatBot::ChatBot(ChatBot &&source) {
 
 // move assign operator(note double '&', not const)
 ChatBot& ChatBot::operator=(ChatBot &&source) {
+    std::cout << "ChatBot move assignment instance " << this << " from " << &source << std::endl;
     if (this == &source) {
         return *this;
     }
