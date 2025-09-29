@@ -8,21 +8,24 @@ GraphNode::GraphNode(int id)
 
 GraphNode::~GraphNode()
 {
-    std::cout << "~GraphNode" << std::endl;
+    std::cout << __PRETTY_FUNCTION__  << std::endl;
 }
 
 void GraphNode::AddToken(std::string token)
 {
+    std::cout << __PRETTY_FUNCTION__  << std::endl;
     _answers.push_back(token);
 }
 
 void GraphNode::AddEdgeToParentNode(GraphEdge *edge)
 {
+    std::cout << __PRETTY_FUNCTION__  << std::endl;
     _parentEdges.push_back(edge);
 }
 
 void GraphNode::AddEdgeToChildNode(std::unique_ptr<GraphEdge> edge)
 {
+    std::cout << __PRETTY_FUNCTION__  << std::endl;
     _childEdges.push_back(std::move(edge)); // forgot about xvalues
 }
 

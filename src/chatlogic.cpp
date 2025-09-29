@@ -19,7 +19,10 @@ ChatLogic::ChatLogic()
 
 ChatLogic::~ChatLogic()
 {
-    std::cout << "ChatLogic Destructor" << std::endl;
+    std::cout << __PRETTY_FUNCTION__  << std::endl;
+    //// STUDENT CODE
+    ////
+
     // delete all nodes
     for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it)
     {
@@ -32,6 +35,7 @@ ChatLogic::~ChatLogic()
 template <typename T>
 void ChatLogic::AddAllTokensToElement(std::string tokenID, tokenlist &tokens, T &element)
 {
+    std::cout << __PRETTY_FUNCTION__  << std::endl;
     // find all occurences for current node
     auto token = tokens.begin();
     while (true)
@@ -51,6 +55,7 @@ void ChatLogic::AddAllTokensToElement(std::string tokenID, tokenlist &tokens, T 
 
 void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 {
+    std::cout << __PRETTY_FUNCTION__  << std::endl;
     // load file with answer graph elements
     std::ifstream file(filename);
 
@@ -188,21 +193,26 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 
 void ChatLogic::SetPanelDialogHandle(ChatBotPanelDialog *panelDialog)
 {
+    std::cout << __PRETTY_FUNCTION__  << std::endl;
     _panelDialog = panelDialog;
 }
 
 void ChatLogic::SetChatbotHandle(ChatBot *chatbot)
 {
+  std::cout << "ChatLogic::SetChatbotHandle(this =" << this << ", chatbot = "
+	    << chatbot << ")" << std::endl;
     _chatBot = chatbot;
 }
 
 void ChatLogic::SendMessageToChatbot(std::string message)
 {
+      std::cout << __PRETTY_FUNCTION__  << std::endl;
     _chatBot->ReceiveMessageFromUser(message);
 }
 
 void ChatLogic::SendMessageToUser(std::string message)
 {
+      std::cout << __PRETTY_FUNCTION__  << std::endl;
     _panelDialog->PrintChatbotResponse(message);
 }
 
