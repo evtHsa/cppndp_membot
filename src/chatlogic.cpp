@@ -14,26 +14,18 @@
 
 ChatLogic::ChatLogic()
 {
-    //// STUDENT CODE
-    ////
-    std::cout << "ChatLogic Constructor" << std::endl;
+  std::cout << __PRETTY_FUNCTION__  << ", this: " << this << std::endl;
 }
 
 ChatLogic::~ChatLogic()
 {
-    //// STUDENT CODE
-    ////
-
-
+    std::cout << "ChatLogic Destructor" << std::endl;
     // delete all nodes
     for (auto it = std::begin(_nodes); it != std::end(_nodes); ++it)
     {
       it = _nodes.erase(it);
     }
 
-
-    ////
-    //// EOF STUDENT CODE
     // deletion of smart ptrs effects deletion of graph edge when Node is dtor'ed
 }
 
@@ -109,9 +101,6 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
                     // node-based processing
                     if (type->second == "NODE")
                     {
-                        //// STUDENT CODE
-                        ////
-
                         // check if node with this ID exists already
                         auto newNode = std::find_if(_nodes.begin(), _nodes.end(), [&id](std::unique_ptr<GraphNode>& node) { return node->GetID() == id; });
 
@@ -124,17 +113,11 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
                             // add all answers to current node
                             AddAllTokensToElement("ANSWER", tokens, **newNode);
                         }
-
-                        ////
-                        //// EOF STUDENT CODE
                     }
 
                     // edge-based processing
                     if (type->second == "EDGE")
                     {
-                        //// STUDENT CODE
-                        ////
-
                         // find tokens for incoming (parent) and outgoing (child) node
                         auto parentToken = std::find_if(tokens.begin(), tokens.end(), [](const std::pair<std::string, std::string> &pair) { return pair.first == "PARENT"; });
                         auto childToken = std::find_if(tokens.begin(), tokens.end(), [](const std::pair<std::string, std::string> &pair) { return pair.first == "CHILD"; });
@@ -158,9 +141,6 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
                             (*childNode)->AddEdgeToParentNode(edge.get());
                             (*parentNode)->AddEdgeToChildNode(std::move(edge));
                         }
-
-                        ////
-                        //// EOF STUDENT CODE
                     }
                 }
                 else
@@ -178,9 +158,6 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
         std::cout << "File could not be opened!" << std::endl;
         return;
     }
-
-    //// STUDENT CODE
-    ////
 
     // identify root node
     GraphNode *rootNode = nullptr;
@@ -202,9 +179,6 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
     }
 
     // add chatbot to graph root node
-    
-    ////
-    //// EOF STUDENT CODE
     ChatBot chatBot("../images/chatbot.png");
     SetChatbotHandle(&chatBot); // messaging path from chatLogic -> chatBot
     chatBot.SetChatLogicHandle(this); // messaging path from chaBbot to chatlogic
